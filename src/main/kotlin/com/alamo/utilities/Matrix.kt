@@ -84,8 +84,4 @@ class Matrix<T>(val rows:Int = 3, val cols:Int = 3, initValue:T) {
         return listOf<Coord>()
     }
   }
-
-  fun newMethod(): Int = 10
-
-  
 }

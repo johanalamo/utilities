@@ -6,7 +6,7 @@ import org.junit.Before
 import org.junit.Assert.*
 
 
-class Matrix_constructTest {
+class Matrix_getLinesTest {
   var m:Matrix<String?> = Matrix(4,4,null)
   var c1 = "X"
   var c2 = "O"
@@ -43,7 +43,7 @@ class Matrix_constructTest {
 
 
   @Test
-  fun getLines(){
+  fun whenGetLines_ShouldReturnListOfLines(){
     //asserts for c1
     assertEquals(2,m.getLines(2,c1).size) //there are two lines of length two for c1
     assertEquals(4,m.getLines(1,c1).size)//there are four lines of length one for c1
@@ -63,36 +63,5 @@ class Matrix_constructTest {
     //check when size Line is smaller than 1
     assertEquals(0,m.getLines(-1,null).size)//there are four lines of length two for null
 
-  }
-
-  @Test
-  fun getEmptyCells(){
-    assertEquals(4, m.getEmptyCells().size)
-    assertEquals(true, m.getEmptyCells().contains(Coord(1,1)))
-    assertEquals(true, m.getEmptyCells().contains(Coord(2,2)))
-    assertEquals(true, m.getEmptyCells().contains(Coord(1,0)))
-    assertEquals(true, m.getEmptyCells().contains(Coord(2,0)))
-  }
-
-  @Test(expected=Exception::class)
-  fun construct_fail_rows_low() {  Matrix<Int>(0,1, 99)  }
-
-  @Test(expected=Exception::class)
-  fun construct_fail_rows_high() {  Matrix<Int>(1001,1, 99)  }
-
-  @Test(expected=Exception::class)
-  fun construct_fail_cols_low() {  Matrix<Int>(1,0, 99)  }
-
-  @Test(expected=Exception::class)
-  fun construct_fail_cols_high() {  Matrix<Int>(1,1001, 99)  }
-
-  @Test(expected=IndexOutOfBoundsException::class)
-  fun whenSetOutOfBounds_ShouldProduceAnIndexOutOfBoundsException(){
-    m.set(4,3, "hola"); //4 is out of bounds
-  }
-
-  @Test(expected=IndexOutOfBoundsException::class)
-  fun whenGetOutOfBounds_ShouldProduceAnIndexOutOfBoundsException(){
-    m.get(4,3); //4 is out of bounds
   }
 }

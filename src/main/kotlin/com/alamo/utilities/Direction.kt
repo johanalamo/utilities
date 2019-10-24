@@ -11,6 +11,8 @@ package com.alamo.utilities
  * matrix row (-1), but stay in the same column (value 0). For
  * Northwest, row is -1 and col is -1, for southeast row=1 and col=1
  *
+ * @author Johan Alamo (johan.alamo@gmail.com)
+ *
  * @property row Positions to move in the matrix row (-1, 0 or 1)
  * @property col Positions to move in the matrix column (-1, 0 or 1)
  */

@@ -1,5 +1,3 @@
-
-
 package com.alamo.utilities
 
 import com.alamo.utilities.*
@@ -43,13 +41,6 @@ class Matrix_constructTest {
     m.set(3,1,c3)
   }
 
-  @Test
-  fun aaaa(){
-
-
-
-    assertTrue(true)
-  }
 
   @Test
   fun getLines(){
@@ -83,91 +74,25 @@ class Matrix_constructTest {
     assertEquals(true, m.getEmptyCells().contains(Coord(2,0)))
   }
 
-/*
-
-  @Test fun construct_success() {
-    Matrix<Int?>(6, 6, 99)
-    Matrix<Int?>(6, 6, null)
-  }
-
-
-  @Test fun getRows_success() {
-    var t: Matrix<String?> = Matrix(6, 6, "test")
-    assertEquals(6, t.rows)
-  }
-  @Test fun getCols_success() {
-    var t: Matrix<String?> = Matrix(6, 6, "test")
-    assertEquals(6, t.cols)
-  }
-  @Test fun get_success() {
-    var cell:Cell? = Cell(Card(1,"X"), TatetiPlayer(1,"juan"))
-    var t: Matrix<Cell?> = Matrix(6, 6, cell)
-    assertEquals(cell, t.get(3,3))
-  }
-
-  @Test(expected=IndexOutOfBoundsException::class)
-  fun get_fail() {
-    var t: Matrix<Cell?> = Matrix(6, 6, null)
-    t.get(6,6) //position 6, 6 does not exists
-  }
-
-  @Test fun set_success() {
-    var t: Matrix<Int?> = Matrix(6, 6, 99)
-    t.set(2,2,77)
-    assertEquals(77, t.get(2,2))
-  }
-
-  @Test(expected=IndexOutOfBoundsException::class)
-  fun set_fail() {
-    var t: Matrix<Int?> = Matrix(6, 6, null)
-    t.set(6,6,99) //position 6, 6 does not exists
-  }
-
-
-  @Test
-  fun getLines(){
-    var m:Matrix<String?> = Matrix(4,4,null)
-    var c1 = "X"
-    var c2 = "O"
-    var c3 = "P"
-    //table for this example
-    //  c1  c1  c3  c2
-    //  --  --  c2  c2
-    //  --  c2  --  c2
-    //  c2  c3  c1  c1
-
-    //sets for c1
-    m.set(0,0,c1)
-    m.set(0,1,c1)
-    m.set(3,2,c1)
-    m.set(3,3,c1)
-    //sets for c2
-    m.set(0,3,c2)
-    m.set(1,2,c2)
-    m.set(2,1,c2)
-    m.set(3,0,c2)
-    m.set(1,3,c2)
-    m.set(2,3,c2)
-    //sets for c3
-    m.set(0,2,c3)
-    m.set(3,1,c3)
-
-  }
-
-  */
   @Test(expected=Exception::class)
   fun construct_fail_rows_low() {  Matrix<Int>(0,1, 99)  }
 
   @Test(expected=Exception::class)
-  fun construct_fail_rows_high() {  Matrix<Int>(101,1, 99)  }
+  fun construct_fail_rows_high() {  Matrix<Int>(1001,1, 99)  }
 
   @Test(expected=Exception::class)
   fun construct_fail_cols_low() {  Matrix<Int>(1,0, 99)  }
 
   @Test(expected=Exception::class)
-  fun construct_fail_cols_high() {  Matrix<Int>(1,101, 99)  }
+  fun construct_fail_cols_high() {  Matrix<Int>(1,1001, 99)  }
 
-  fun otro() {
-      var l:Int = m.newMethod()
+  @Test(expected=IndexOutOfBoundsException::class)
+  fun whenSetOutOfBounds_ShouldProduceAnIndexOutOfBoundsException(){
+    m.set(4,3, "hola"); //4 is out of bounds
+  }
+
+  @Test(expected=IndexOutOfBoundsException::class)
+  fun whenGetOutOfBounds_ShouldProduceAnIndexOutOfBoundsException(){
+    m.get(4,3); //4 is out of bounds
   }
 }

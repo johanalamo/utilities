@@ -41,6 +41,8 @@ val dokkaJar by tasks.creating(Jar::class) {
     from(tasks.dokka)
 }
 
+
+
 group = "com.alamo"
 version = "0.0.1"
 

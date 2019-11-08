@@ -1,0 +1,17 @@
+
+//apply plugin: 'maven'
+//id("org.jetbrains.dokka") version "0.9.17"
+
+tasks.dokka {
+    outputFormat = "html"
+    outputDirectory = "$buildDir/javadoc"
+}
+
+import org.gradle.jvm.tasks.Jar
+
+task dokkaJar(type: Jar, dependsOn: dokka) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    classifier = 'javadoc'
+    description = "Assembles Kotlin docs with Dokka"
+    from tasks.dokka
+}

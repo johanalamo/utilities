@@ -31,7 +31,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-    archives javadocJar
+    archives dokkaJar
     archives sourcesJar
 }
 

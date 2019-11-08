@@ -1,6 +1,0 @@
-
-task compilar  {
-  println "hola"
-}
-
-apply from: "build.gradle.kts"

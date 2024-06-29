@@ -24,7 +24,7 @@ import com.alamo.utilities.Coord
  *
  */
 
-class Matrix<T>(val rows:Int = 3, val cols:Int = 3, initValue:T) {
+class Matrix<T>(val rows:Int = 3, val cols:Int = 3, initValue:T): Iterable<T> {
   private var data:MutableList<MutableList<T>> = mutableListOf<MutableList<T>>()
 
   init {
@@ -140,5 +140,24 @@ class Matrix<T>(val rows:Int = 3, val cols:Int = 3, initValue:T) {
     }catch(e:IndexOutOfBoundsException){
         return listOf<Coord>()
     }
+  }
+
+  override fun iterator(): Iterator<T> {
+    return MatrixIterator()
+  }
+
+   private inner class MatrixIterator : Iterator<T> {
+     private var currentCol = 0
+     private var currentRow = 0
+
+    override fun hasNext(): Boolean = (currentRow < rows)
+
+    override fun next(): T = get(row = currentRow, col = currentCol).apply {
+        currentCol++
+        if (currentCol>=cols) {
+          currentCol = 0
+          currentRow++
+        }
+      }
   }
 }

@@ -4,7 +4,7 @@
  * This generated file contains a sample Kotlin library project to get you started.
  */
  buildscript {
-     ext.kotlin_version = '1.3.50'
+     ext.kotlin_version = '2.0.0'
      repositories {
          google()
          jcenter()
@@ -78,8 +78,13 @@ dependencies {
 
     // Use the Kotlin JUnit integration.
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+
+    testImplementation "io.mockk:mockk:1.13.11"
 }
 
 apply from: 'dokka.gradle'
-apply from: 'installv1.gradle'
+
+// the following one is producing an error, should be fixed (2024/06/29)
+//apply from: 'installv1.gradle'
+
 apply from: 'bintrayv1.gradle'

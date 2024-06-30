@@ -149,6 +149,16 @@ class Matrix<T>(val rows: Int = 3, val cols: Int = 3, initValue: T) : Iterable<T
         }
     }
 
+    fun myOwnForEach(operation:(T) -> Unit) {
+        iterator().run {
+            while (hasNext()) {
+                operation(next())
+            }
+        }
+        // original forEach
+        // for (element in iterator()) operation(element)
+    }
+
     override fun iterator(): Iterator<T> {
         return MatrixIterator()
     }

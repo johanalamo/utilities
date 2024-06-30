@@ -7,7 +7,7 @@ import kotlin.random.Random
 import kotlin.test.assertTrue
 
 
-class Matrix_forEach {
+class Matrix_myOwnForEach {
 
     lateinit var sut:Matrix<Int>
 

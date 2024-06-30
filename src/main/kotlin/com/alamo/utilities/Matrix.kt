@@ -159,6 +159,17 @@ class Matrix<T>(val rows: Int = 3, val cols: Int = 3, initValue: T) : Iterable<T
         // for (element in iterator()) operation(element)
     }
 
+    fun myOwnReduce(operation: (T,T) -> T): T {
+        var acum: T = get(0,0)
+        for (r in 0..<rows) {
+            for (c in 0..<cols) {
+                if (c != 0 || r != 0)
+                    acum = operation(acum, get(r,c))
+            }
+        }
+        return acum
+    }
+
     override fun iterator(): Iterator<T> {
         return MatrixIterator()
     }
